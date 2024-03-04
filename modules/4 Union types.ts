@@ -7,8 +7,6 @@ typeHello = 'Hello'
 typeHello = 2 // no hay error
 
 
-
-
 //* Union Type en retorno de función
 /* TypeScript infiere el tipo de retorno de una función, por lo tanto, si una función devuelve más de un tipo de datos,
  TypeScript inferirá que el tipo de retorno es una unión de todos los tipos de retorno posibles. Si desea asignar el 

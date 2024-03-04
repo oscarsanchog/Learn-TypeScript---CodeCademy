@@ -9,7 +9,7 @@ enum MaritalStatus {
   Divorced
 }
 
-let employee: [string, MaritalStatus, number] = [
+let employee: [string, MaritalStatus, number] = [ // Este es un tuple
   'Bob',
   MaritalStatus.Married,
   39
@@ -31,7 +31,7 @@ enum ClassName {
   Senior = 'senior'
 }
 
-const studentClass: ClassName = ClassName.Junior
+const studentClass: ClassName = ClassName.Junior // Como tienen valores asignados, funcionan como valores de las variables
 const studentGrade: ClassGrade = ClassGrade.Junior
 
 console.log(`I am a ${studentClass} in ${studentGrade}th grade`); // I am a junior in 9th grade
@@ -62,7 +62,7 @@ enum Prizes {
   Pen        // value is 11
 };
 
-const day: Weekdays = Weekdays.Wednesday
+const day: Weekdays = Weekdays.Wednesday 
 const grade: Grades = Grades.B
 const prize: Prizes = Prizes.Pen
 console.log(`On day ${day} of the week, I got ${grade} on my test! I won a prize with ${prize} points!`);
@@ -78,14 +78,16 @@ enum Weekend {
 const today: Weekend = 7;       // No da error porque el 7 está dentro de enum (se refiere a Sunday)
 console.log(`Today is the ${today}th day of the week!`);
 // Prints "Today is the 7th day of the week!"
-/* Aunque en esencia Weekend es una enumeración que asigna valores numéricos consecutivos a sus miembros, al utilizarla como tipo para la variable today, estás indicando explícitamente que today debe ser un valor de la enumeración Weekend y no simplemente un número arbitrario.
+/* Aunque en esencia Weekend es una enumeración que asigna valores numéricos consecutivos a sus miembros, 
+al utilizarla como tipo para la variable today, estás indicando explícitamente que today debe ser un valor de la 
+enumeración Weekend y no simplemente un número arbitrario.
 
 Esta práctica puede hacer que el código sea más legible y mantenible, ya que facilita la comprensión del propósito de 
 la variable today y ayuda a prevenir errores al limitar el conjunto de valores válidos que puede tomar. Además, al 
 utilizar un tipo enumerado, se obtiene un mayor nivel de documentación intrínseca en el código, ya que los nombres de 
 los miembros de la enumeración (Friday, Saturday, Sunday) proporcionan contexto sobre el significado de los valores. */
 
-//* Case: A diferencia de los enums numéricos, los enums de strings no permiten ser asignados a algunos de sus miembros 
+//* Caso: A diferencia de los enums numéricos, los enums de strings no permiten ser asignados a algunos de sus miembros 
 //* por su significado
 enum MaritalStatus2 {
   Single = 'SINGLE',
@@ -102,14 +104,17 @@ let eligibility: MaritalStatus2;
 eligibility = MaritalStatus2.Separated;  // No error
 
 
-//* Object types
+
+
+//! Object types
 // Se puede definir los tipos de las propiedades en un objeto así:
 let car: {make: string, model: string, year: number}
 
 car = {make: 'Toyota', model: 'Camry', year: 2020}
 // car = {make: 'Toyota', mode: 'Camry', year: 2020} // error porque la palabra es model, no mode.
 
-//* Type Alias
+//! TYPE ALIAS
+//* in objects
 /* En lugar de volver a declarar el mismo tipo de objeto complejo en todos los lugares donde se utiliza, TypeScript 
 proporciona una forma sencilla de reutilizar este tipo de objeto con la palabra type. */
 type Student = {
@@ -134,7 +139,7 @@ let studentBoris: Student = {name: 'Boris', age: 35, courses: ['JavaScript', 'Ty
 let employeeBoris: Employee = studentBoris;     // No error
 console.log(studentBoris === employeeBoris);    // Prints true
 
-
+//* In functions
 //* Alias de tipo de función de TypeScript
 /* En JavaScript, se puede asignar una función a una variable, y en TypeScript, se puede utilizar un alias de tipo de 
 función para anotar una variable */
@@ -180,6 +185,7 @@ console.log(findMiddleMember<string>(['I', 'am', 'very', 'happy'])); // Prints "
 console.log(findMiddleMember<number>([210, 369, 102]));     // Prints 369. M toma el tipado de string
 
 
+//* En arrays
 //* Tipado para un array unidimensional
 // Es parecido a un tipo primitivo, solo que agregamos [] al final del tipo:
 // zipcodes es un array de strings
@@ -189,8 +195,8 @@ let zipcodes: string[] = ['03255', '02134', '08002', '03063'];
 // Pushing a number to zipcodes will generate an error
 // Error: Argument of type 'number' is not assignable to parameter of type 'string'.
 
-//* Tipado genérico para matriz unidimensional 
-//El tipo de una matriz unidimensional en TypeScript se puede anotar con Array<X>
+//* Tipado genérico para un array unidimensional 
+//El tipo de un array unidimensional en TypeScript se puede anotar con Array<X>
 // Definición de un tipo genérico para un array unidimensional
 type ArrayUnidimensional<T> = Array<T>;
 
@@ -255,7 +261,7 @@ is not assignable to type '[string, number, boolean]'.
 Source has 4 element(s) but target allows only 3.
 */
 
-//* Asignación de arrays de tuplas 
+//! Asignación de arrays de tuplas 
 /* Aunque una tupla puede tener todos los elementos del mismo tipo y parece una matriz, una tupla sigue siendo de su 
 propio tipo. Una tupla no puede expandirse, mientras que una matriz sí. Por lo tanto, asignar una matriz a una tupla 
 que coincida con el mismo tipo y longitud generará un error. */
@@ -311,6 +317,7 @@ console.log(sumAllNumbers(100, 70, '30'));
 
 /* La anotación explícita de un rest parameter de una función alertará a TypeScript para que verifique la 
 inconsistencia de tipos entre el parámetro de descanso y los argumentos de llamada de función. */
+
 const sumAllNumbers = (...numberList: number[]): number => {
   let sum = 0;
   for (let i=0; i < numberList.length; i++) {

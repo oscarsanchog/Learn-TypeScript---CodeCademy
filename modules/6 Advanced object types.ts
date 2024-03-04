@@ -120,6 +120,7 @@ interface TravelDocument {
   ticket: Ticket;
 }
 
+
 //* Herencia de una interface
 /* Al igual que las clases de JavaScript, una interfaz puede heredar propiedades y métodos de otra interfaz utilizando 
 la palabra clave extends. Se puede acceder a los miembros de la interfaz heredada en la nueva interfaz. */
